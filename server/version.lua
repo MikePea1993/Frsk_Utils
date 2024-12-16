@@ -1,4 +1,4 @@
-local currentVersion = "1.0.0"
+local currentVersion = "1.1.0"
 local resourceName = "frsk_utils"
 local githubUser = "MikePea1993" -- Change this to your GitHub username
 local githubRepo = "Frsk_Utils" -- Change this to your repo name
