@@ -36,6 +36,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 300);
   }
 
+  // Show notification
+  function showNotification(data) {
+    const container = document.getElementById("notifications-container");
+    const notification = document.createElement("div");
+    notification.className = "notification";
+    notification.textContent = data.message;
+
+    // Add type-specific styling if provided
+    if (data.type) {
+      notification.classList.add(`notification-${data.type}`);
+    }
+
+    container.appendChild(notification);
+
+    // Trigger animation
+    setTimeout(() => {
+      notification.classList.add("show");
+    }, 100);
+
+    // Remove notification after duration
+    setTimeout(() => {
+      notification.classList.remove("show");
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }, data.duration || 5000);
+  }
+
   // Message handler
   window.addEventListener("message", function (event) {
     const data = event.data;
@@ -47,6 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       case "hidePrompt":
         hidePrompt();
+        break;
+
+      case "showNotification":
+        showNotification(data);
         break;
     }
   });

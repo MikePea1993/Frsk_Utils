@@ -31,7 +31,8 @@ exports {
     'CreatePrompt',
     'RemovePrompt',
     'ShowPrompt',
-    'HidePrompt'
+    'HidePrompt',
+    'ShowNotification'
 }
 
 server_exports {

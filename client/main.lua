@@ -1,4 +1,5 @@
 local prompts = {}
+local promptActive = false
 
 -- Create a new prompt
 function CreatePrompt(name, key, text, group, action)
@@ -81,6 +82,16 @@ function HidePrompt(name)
     return true
 end
 
+-- Show a notification
+function ShowNotification(message, notifType, duration)
+    SendNUIMessage({
+        type = 'showNotification',
+        message = message,
+        notifType = notifType or 'info',
+        duration = duration or 5000
+    })
+end
+
 -- Check if a prompt was activated
 Citizen.CreateThread(function()
     while true do
@@ -95,3 +106,27 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+-- Cleanup function for resource stop/restart
+local function CleanupPrompts()
+    for name, _ in pairs(prompts) do
+        RemovePrompt(name)
+    end
+    SendNUIMessage({
+        type = "hidePrompt"
+    })
+end
+
+-- Resource cleanup
+AddEventHandler('onResourceStop', function(resourceName)
+    if (GetCurrentResourceName() == resourceName) then
+        CleanupPrompts()
+    end
+end)
+
+-- Export the functions
+exports('CreatePrompt', CreatePrompt)
+exports('RemovePrompt', RemovePrompt)
+exports('ShowPrompt', ShowPrompt)
+exports('HidePrompt', HidePrompt)
+exports('ShowNotification', ShowNotification)

@@ -58,7 +58,7 @@ local function checkVersion()
         if updateAvailable then
             print([[^8
 ╔════════════════════════════════════════════════════════════╗
-║                   FRSK-UTILS UPDATE ALERT                   ║
+║                   FRSK-UTILS UPDATE ALERT                  ║
 ╠════════════════════════════════════════════════════════════╣^7]])
             print("^8║^7 Current Version: ^1" .. currentVersion .. "^7")
             print("^8║^7 Latest Version: ^2" .. latestVersion .. "^7")
