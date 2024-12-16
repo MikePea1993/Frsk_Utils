@@ -1,7 +1,7 @@
 local currentVersion = "1.0.0"
 local resourceName = "frsk_utils"
-local githubUser = "FRSK-Development" -- Change this to your GitHub username
-local githubRepo = "frsk_utils" -- Change this to your repo name
+local githubUser = "MikePea1993" -- Change this to your GitHub username
+local githubRepo = "Frsk_Utils" -- Change this to your repo name
 local githubAPI = ("https://api.github.com/repos/%s/%s/releases/latest"):format(githubUser, githubRepo)
 
 -- Function to compare semantic versions

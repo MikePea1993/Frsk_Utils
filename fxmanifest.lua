@@ -2,16 +2,21 @@ fx_version 'cerulean'
 game 'rdr3'
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 
+author 'FRSK Development'
 description 'FRSK Utils - Utility functions for RedM scripts'
 version '1.0.0'
 
+shared_scripts {
+    'config.lua'
+}
+
 client_scripts {
-    'config.lua',
     'client/main.lua'
 }
 
 server_scripts {
-    './server/server.lua'
+    'server/server.lua',
+    'server/version.lua'
 }
 
 ui_page 'html/index.html'
@@ -27,4 +32,8 @@ exports {
     'RemovePrompt',
     'ShowPrompt',
     'HidePrompt'
+}
+
+server_exports {
+    'getCurrentVersion'
 }
